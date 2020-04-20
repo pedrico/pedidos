@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:300,400,600,700");
+
+@media (min-width: 766px) {
+    .picapino-font {
+        font-family: Righteous;
+        font-size: 5em;
+        color: #A6A6A6;
+    }
+    .contenedor2 {
+        padding-left: 5em; 
+        padding-right: 5em;
+        padding-top: 3em;
+    }
+}
+
+@media (max-width: 767px) {
+    .picapino-font {
+        font-family: Righteous;
+        font-size: 3em;
+        color: #A6A6A6;
+    }
+    .content-to-hide {
+        display: none;
+    }
+    
+}
+
