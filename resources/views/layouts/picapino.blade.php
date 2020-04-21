@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Picapino') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('inspinia/js/jquery-3.1.1.min.js') }}" defer></script>

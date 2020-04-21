@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\Welcome;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('email', function(){
+    $user = new App\User(['name' => 'Pedro']);
+    return new Welcome($user);
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 

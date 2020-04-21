@@ -189,10 +189,10 @@ ul.nav-second-level {
   height: auto !important;
 }
 .nav-header a {
-  color: #DFE4ED;
+  color: rgb(255, 255, 255);
 }
 .nav-header .text-muted {
-  color: #8095a8;
+  color: #ffffff;
 }
 .minimalize-styl-2 {
   padding: 4px 12px;

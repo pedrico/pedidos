@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\ResetPasswordPicapino;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,5 +41,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->hasMany('App\RolesUser');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordPicapino($token));
     }
 }

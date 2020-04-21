@@ -3,9 +3,6 @@
 @section('content')
 <div id="wrapper">
     @include('layouts.sidebar')
-    <div id="page-wrapper" class="gray-bg">
-
-        @include('layouts.footer')
-    </div>
+    @include('layouts.header')
 </div>
 @endsection
