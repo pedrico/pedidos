@@ -1,8 +1,9 @@
-@extends('layouts.picapino')
+@extends('layouts.picapino_master')
 
 @section('content')
 <div id="wrapper">
-    <div id="page-wrapper" class="gray-bg contenedor2">
+    @include('layouts.sidebar')
+    <div id="page-wrapper" class="gray-bg">
 
         @include('layouts.footer')
     </div>

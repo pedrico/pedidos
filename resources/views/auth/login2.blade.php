@@ -26,7 +26,7 @@
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Iniciar Sesión</button>
 
-            <a href="#"><small>¿Olvidaste tu contraseña?</small></a>
+            <a href="{{ route('password.request') }}"><small>¿Olvidaste tu contraseña?</small></a>
             <p class="text-muted text-center"><small>{{ __('¿No tienes una cuenta?') }}</small></p>
 
             <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">{{ __('Crear cuenta') }}</a>

@@ -16,6 +16,10 @@
     <script src="{{ asset('inspinia/js/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('inspinia/js/plugins/metisMenu/jquery.metisMenu.js') }}" defer></script>
     <script src="{{ asset('inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js') }}" defer></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('inspinia/js/inspinia.js') }}" defer></script>
+    <script src="{{ asset('inspinia/js/plugins/pace/pace.min.js') }}" defer></script>
   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -31,9 +35,9 @@
     <link href="{{ asset('inspinia/css/picapino.css') }}" rel="stylesheet">
 </head>
 
-<body class="gray-bg">
+<body>
     <div id="app">
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
