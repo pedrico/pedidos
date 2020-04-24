@@ -3,6 +3,6 @@
         Guatemala
     </div>
     <div>
-        <strong>Copyright</strong> Popoyan &copy; 2020 - 2020
+        <strong>Copyright</strong> Full Compliance Group &copy; 2020 - 2020
     </div>
 </div>

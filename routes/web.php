@@ -28,5 +28,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('pruebasCSS', 'PruebasCSSController@show');
 Route::get('pruebasCSS_register', 'PruebasCSSController@register');
-
 Route::resource('dashboard', 'DashboardController');
+Route::resource('users', 'UserController');
+Route::get('products', 'Customer\ProductController@products')->name('products');
+
+Route::resource('profile', 'Customer\ProfileController');
+
+
+
+

@@ -26,23 +26,55 @@
                                     @csrf
                                     <p>Al registrarte podras realizar tus compras</p>
                                     <div class="form-group">
-                                        <label for="name" class="col-lg-2 control-label text-md-right">{{ __('Nombre') }}</label>
+                                        <label for="name" class="col-lg-2 control-label text-md-right">{{ __('Primer nombre') }}</label>
                                         <div class="col-lg-6">
-                                            <input id="name" type="text" placeholder="Nombre" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            <input id="name" type="text" placeholder="Primer nombre" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                             @error('name')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="second_name" class="col-lg-2 control-label text-md-right">{{ __('Segundo nombre') }}</label>
+                                        <div class="col-lg-6">
+                                            <input id="second_name" type="text" placeholder="Segundo nombre" class="form-control @error('second_name') is-invalid @enderror" name="second_name" value="{{ old('second_name') }}" autocomplete="second_name" autofocus>
+                                            @error('second_name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name" class="col-lg-2 control-label text-md-right">{{ __('Primer apellido') }}</label>
+                                        <div class="col-lg-6">
+                                            <input id="last_name" type="text" placeholder="Primer apellido" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+                                            @error('last_name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="second_last_name" class="col-lg-2 control-label text-md-right">{{ __('Segundo apellido') }}</label>
+                                        <div class="col-lg-6">
+                                            <input id="second_last_name" type="text" placeholder="Segundo apellido" class="form-control @error('second_last_name') is-invalid @enderror" name="second_last_name" value="{{ old('second_last_name') }}" required autocomplete="second_last_name" autofocus>
+                                            @error('second_last_name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="email" class="col-lg-2 control-label text-md-right">{{ __('E-Mail') }}</label>
                                         <div class="col-md-6">
                                             <input id="email" type="email" placeholder="e-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                             @error('email')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -55,7 +87,7 @@
                                             <input id="password" type="password" placeholder="Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                             @error('password')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror

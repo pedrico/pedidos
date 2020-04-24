@@ -16,13 +16,18 @@
             <div class="form-group">
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="email">
                 @error('email')
-                <span class="invalid-feedback" role="alert">
+                <span class="text-danger" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
             </div>
             <div class="form-group">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="contraseña">
+                @error('password')
+                <span class="text-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Iniciar Sesión</button>
 
@@ -31,7 +36,7 @@
 
             <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">{{ __('Crear cuenta') }}</a>
         </form>
-        <p class="m-t"> <small>Popoyan &copy; 2020</small> </p>
+        <p class="m-t"> <small>Full Compliance Group &copy; 2020</small> </p>
     </div>
 </div>
 @endsection

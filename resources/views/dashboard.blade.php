@@ -3,6 +3,11 @@
 @section('content')
 <div id="wrapper">
     @include('layouts.sidebar')
-    @include('layouts.header')
+    <div id="page-wrapper" class="gray-bg">
+        @include('layouts.header')
+
+        
+        @include('layouts.footer')
+    </div>
 </div>
 @endsection

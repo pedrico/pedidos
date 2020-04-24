@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
-use App\dashboard;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function products()
     {
-        // dd(auth()->user()->roles);
-        $title = 'Bienvenido';
-        $ruta = json_decode('[["Home", "/dashboard"]]', true);
-        return view('dashboard', compact('ruta', 'title'));
+        $arreglo = [1,2,3,4,5,6,7,8,9,10];
+        //dd($arreglo);
+        return view('customer.products', compact('arreglo'));
     }
 
     /**
@@ -48,10 +43,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\dashboard  $dashboard
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(dashboard $dashboard)
+    public function show($id)
     {
         //
     }
@@ -59,10 +54,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\dashboard  $dashboard
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(dashboard $dashboard)
+    public function edit($id)
     {
         //
     }
@@ -71,10 +66,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\dashboard  $dashboard
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, dashboard $dashboard)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,10 +77,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\dashboard  $dashboard
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(dashboard $dashboard)
+    public function destroy($id)
     {
         //
     }

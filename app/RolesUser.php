@@ -8,5 +8,5 @@ class RolesUser extends Model
 {
     protected $fillable = [
         'rol_id', 'user_id'
-    ];
+    ];    
 }

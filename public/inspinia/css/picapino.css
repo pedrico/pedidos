@@ -1,19 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:300,400,600,700");
+.sombra {
+    -webkit-box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
+    box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
+}
 
-@media (min-width: 766px) {
+@media (min-width: 768px) {
     .picapino-font {
         font-family: Righteous;
         font-size: 5em;
         color: #A6A6A6;
     }
+    .picapino-font-landing {
+        font-family: Righteous;
+        font-size: 24px;
+        color: #ffffff;
+    }
+    .picapino-font-landing-title {
+        padding: 10px 10px;
+        font-family: Righteous;
+        font-size: 24px;
+        color: #ffffff;
+    }
     .contenedor2 {
-        padding-left: 5em; 
+        padding-left: 5em;
         padding-right: 5em;
         padding-top: 3em;
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .picapino-font {
         font-family: Righteous;
         font-size: 3em;
@@ -22,6 +38,16 @@
     .content-to-hide {
         display: none;
     }
-    
+    .picapino-font-landing-title {
+        padding: 10px 10px;
+        font-family: Righteous;
+        font-size: 24px;
+        color: #A6A6A6;
+    }
 }
 
+@media (max-width: 369px) {
+    .picapino-logo {
+        display: none;
+    }
+}

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'second_name', 'last_name', 'second_last_name', 'email', 'password',
     ];
 
     /**
@@ -40,7 +40,21 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->hasMany('App\RolesUser');
+        return $this->belongsToMany('App\Role', 'roles_users', 'user_id', 'rol_id');
+    }
+
+    public function hasRoles(array $roles)
+    {
+
+        foreach ($roles as $role) {
+            foreach ($this->roles as $userDbRol) {
+                if ($userDbRol->name === $role) {
+                    return true;
+                }
+            }
+        }
+        return false;
+        // return $this->hasMany('App\RolesUser');
     }
 
     public function sendPasswordResetNotification($token)
