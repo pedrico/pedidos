@@ -1,10 +1,11 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
-    <div class="sidebar-collapse">
+    <div class="sidebar-collapse ">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element"> <span>
-                        @if(false)
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                <div class="dropdown profile-element">
+                    <span style="color: #ffffff;">
+                    @if( auth()->user()->profile_images()->count() > 0)                        
+                        <img alt="image" class="img-circle" src="/upload/{{auth()->user()->profile_images[auth()->user()->profile_images()->count()-1]->name}}.jpg" style="width: 100px; height: 100px" />
                         @else
                         <i class="fa fa-user-circle fa-5x"></i>
                         @endif
@@ -22,20 +23,29 @@
                         <li>
                             <a href="" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('Cerrar sesión') }}</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form-side" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </li>
 
                     </ul>
                 </div>
-                <div class="logo-element" style="background-color: #ffffff; ">
-                    <img src="{{asset('img/Trazado 7@2x.png')}}" alt="Picapino" width="100%">
+                <div class="logo-element">
+                    <img src="{{asset('img/logo_white.png')}}" alt="Picapino" width="80%">
                 </div>
             </li>
             @if(auth()->user()->hasRoles(['Admin']))
             <li>
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Administrador</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('users.index')}}">Usuarios</a></li>
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('product_category.index')}}">Categoría de productos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Supervisor</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('users.index')}}">Usuarios</a></li>
                 </ul>

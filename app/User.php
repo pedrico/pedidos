@@ -43,6 +43,21 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role', 'roles_users', 'user_id', 'rol_id');
     }
 
+    public function addresses()
+    {
+        return $this->hasMany('App\Address');
+    }
+
+    public function phones()
+    {
+        return $this->hasMany('App\Phone');
+    }
+
+    public function profile_images()
+    {
+        return $this->hasMany('App\ProfileImage');
+    }
+
     public function hasRoles(array $roles)
     {
 

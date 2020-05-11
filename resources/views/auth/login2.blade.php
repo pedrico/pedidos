@@ -3,13 +3,16 @@
 @section('content')
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
+        <div class="row content-to-hide" style="height: 13em">
+
+        </div>
         <div class="row">
             <div class="col-md-12">
-                <img src="{{asset('img/Trazado 7@2x.png')}}" alt="" width="100%">
+                <img src="{{asset('img/logo_white.png')}}" alt="" width="50%">
             </div>
         </div>
         <div>
-            <h2 class="picapino-font">PICAPINO</h2>
+            <h2 class="picapino-font" style="padding-bottom: 10px">PICAPINO</h2>
         </div>
         <form class="m-t" role="form" method="POST" action="{{ route('login') }}">
             @csrf
@@ -29,14 +32,17 @@
                 </span>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-primary block full-width m-b" style="background-color: #66d7d1; border-color: #66d7d1" >Iniciar Sesión</button>
 
-            <a href="{{ route('password.request') }}"><small>¿Olvidaste tu contraseña?</small></a>
-            <p class="text-muted text-center"><small>{{ __('¿No tienes una cuenta?') }}</small></p>
-
-            <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">{{ __('Crear cuenta') }}</a>
+            <a href="{{ route('password.request') }}" style="color: #ffffff; font-weight: 600">¿Olvidaste tu contraseña?</a>
+            
+            <div class="row" style="padding: 2em">
+                <p class="text-center" style="color: #ffffff; font-weight: 400">{{ __('¿No tienes una cuenta?') }}</p>
+    
+                <a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}" style="font-weight: 400">{{ __('Crear cuenta') }}</a>
+            </div>
         </form>
-        <p class="m-t"> <small>Full Compliance Group &copy; 2020</small> </p>
+        <p class="m-t" style="color: #ffffff"> <small>Full Compliance Group &copy; 2020</small> </p>
     </div>
 </div>
 @endsection

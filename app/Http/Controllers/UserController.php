@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $users = \App\User::all();
         $title = 'Usuarios';
-        $ruta = json_decode('[["Home", "/dashboard"],["Usuarios", "/dashboard"]]', true);         
+        $ruta = json_decode('[["Inicio", "/dashboard"],["Usuarios", "/dashboard"]]', true);         
 
         return view('user.index', compact('users', 'title', 'ruta'));
     }

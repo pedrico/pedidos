@@ -30,8 +30,8 @@
     <link href="{{ asset('inspinia/css/picapino.css') }}" rel="stylesheet">
 </head>
 
-<body class="gray-bg">
-    <div id="app">
+<body class="gray-bg" style="background-image: url('img/wallpaper.jpg')">
+    <div id="app" class="FontPicapino">
         <main class="py-4">
             @yield('content')
         </main>

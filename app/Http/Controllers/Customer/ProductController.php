@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,7 +17,8 @@ class ProductController extends Controller
     {
         $arreglo = [1,2,3,4,5,6,7,8,9,10];
         //dd($arreglo);
-        return view('customer.products', compact('arreglo'));
+        $categories = ProductCategory::all();
+        return view('customer.landing', compact('categories'));
     }
 
     /**

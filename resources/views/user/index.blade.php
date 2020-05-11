@@ -20,12 +20,19 @@
                     @foreach($users as $user)
                     <tr>
                         <th>{{$user->id}} </th>
-                        <th>{{$user->name}} </th>
+                        <th>{{$user->name}} {{$user->last_name}} {{$user->second_last_name}} </th>
                         <th>{{$user->email}} </th>
                         <th>
                             @foreach($user->roles as $rol) <span class="badge badge-info">{{$rol->name}}</span>@endforeach
                         </th>
-                        <th></th>
+                        <th>
+                            <a href="{{ url('product_category/create')}}" class="btn btn-sm btn-success" role="button">
+                                <i class="fas fa-truck"></i> Agregar a Drivers Base
+                            </a>
+                            <a href="{{ url('product_category/create')}}" class="btn btn-sm btn-warning" role="button">
+                                <i class="fas fa-biking"></i> Agregar a Drivers Moto
+                            </a>
+                        </th>
                     </tr>
                     @endforeach
                 </tbody>
@@ -38,5 +45,5 @@
 </div>
 @endsection
 @section('page-scripts')
-<script src="{{ asset('inspinia/js/picapino/picapino-tables.js') }}"></script>
+<script src="{{ asset('inspinia/js/picapino.js') }}"></script>
 @endsection

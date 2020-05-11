@@ -3,13 +3,13 @@
 @section('content')
 <div id="wrapper">
 
-    <div id="page-wrapper2" class="gray-bg contenedor2">
+    <div id="page-wrapper2" class="contenedor2">
 
         <div class="row">
             <div class="col-md-12">
                 <label for="" class="picapino-font">PICAPINO</label>
                 <div class="pull-right" style="display: inline-block">
-                    <img src="{{asset('img/Trazado 7@2x.png')}}" alt="picapino" class="content-to-hide animated fadeInRight" style="height: 7em">
+                    <img src="{{asset('img/logo_white.png')}}" alt="picapino" class="content-to-hide animated fadeInRight" style="height: 7em">
                 </div>
             </div>
         </div>

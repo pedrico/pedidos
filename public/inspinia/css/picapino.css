@@ -1,15 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:300,400,600,700");
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@300;800&display=swap");
+
 .sombra {
-    -webkit-box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
-    -moz-box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
-    box-shadow: 15px 18px 22px -5px rgba(0, 0, 0, 0.33);
+    /* -webkit-box-shadow: 14px 14px 20px -10px rgba(0,0,0,0.77);
+    -moz-box-shadow: 14px 14px 20px -10px rgba(0,0,0,0.77);
+    box-shadow: 14px 14px 20px -10px rgba(0,0,0,0.77); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.FontPicapino {
+    font-family: 'Spartan', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.fondo-sidebar-header {
+    background-image: url('../../img/design/BG1.jpg')
+}
+
+.fondo-card {
+    background-image: url('../../img/design_opacity/BG5.jpg');
+    background-position: center top;
+    background-size: 100% auto;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
+    padding: 6px; 
+    border-radius: 5px;
 }
 
 @media (min-width: 768px) {
     .picapino-font {
         font-family: Righteous;
-        font-size: 5em;
-        color: #A6A6A6;
+        font-size: 3em;
+        color: #fcfcfc;
     }
     .picapino-font-landing {
         font-family: Righteous;
@@ -32,8 +54,8 @@
 @media (max-width: 768px) {
     .picapino-font {
         font-family: Righteous;
-        font-size: 3em;
-        color: #A6A6A6;
+        font-size: 2em;
+        color: #fcfcfc;
     }
     .content-to-hide {
         display: none;

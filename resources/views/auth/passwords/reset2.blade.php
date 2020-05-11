@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <a href="{{route('home')}}"> <label for="" class="picapino-font">PICAPINO</label></a>
                 <div class="pull-right" style="display: inline-block">
-                    <a href="{{route('home')}}"> <img src="{{asset('img/Trazado 7@2x.png')}}" alt="picapino" class="content-to-hide animated fadeInRight" style="height: 7em"></a>
+                    <a href="{{route('home')}}"> <img src="{{asset('img/logo_pink.png')}}" alt="picapino" class="content-to-hide animated fadeInRight" style="height: 7em"></a>
                 </div>
             </div>
         </div>

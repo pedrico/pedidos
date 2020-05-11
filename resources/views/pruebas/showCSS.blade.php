@@ -5,7 +5,7 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <img src="{{asset('img/Trazado 7@2x.png')}}" alt="" width="100%">
+                <img src="{{asset('img/logo_pink.png')}}" alt="" width="100%">
             </div>
         </div>
         <div>
