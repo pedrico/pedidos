@@ -18,9 +18,10 @@ class AuthController extends Controller
         $bdPass = DB::table('users as u')
             ->join('roles_users as ru', 'ru.user_id', '=', 'u.id')
             ->join('roles as r', 'ru.rol_id', '=', 'r.id')            
-            ->select('u.id', 'u.password', 'u.name', 'u.last_name', 'u.email')
+            ->select('u.id', DB::raw('concat(u.id)') , 'u.password', 'u.name', 'u.last_name', 'u.email', DB::raw("concat(r.prefix, '-', u.id) as correlative"))
             ->where('u.email', $llave)
-            ->where('r.name', $rol)->first();
+            ->where('r.name', $rol)
+            ->first();
         if ($bdPass) {
             if (Hash::check($pass, $bdPass->password)) {
                 //Credenciales correctas
@@ -32,7 +33,8 @@ class AuthController extends Controller
                     'name' => $bdPass->name,
                     'lastname' => $bdPass->last_name,
                     'email' => $bdPass->email,
-                    'phones' => $phones
+                    'phones' => $phones,
+                    'correlative' => $bdPass->correlative
                 ]);
             } else {
                 //Credenciales invalidas

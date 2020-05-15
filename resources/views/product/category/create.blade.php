@@ -33,7 +33,7 @@
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                 <a href="{{ route('product_category.index')}}" role="button" class="btn btn-secondary ">Cancelar</a>
                             </div>
-                        </form>                        
+                        </form>
                     </div>
                 </div>
             </div>

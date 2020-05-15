@@ -43,6 +43,16 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('product_category.index')}}">Categoría de productos</a></li>
                 </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('product.index')}}">Productos</a></li>
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('base.index')}}">Bases</a></li>
+                </ul>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="{{route('base_driver.index')}}">Drivers Base</a></li>
+                </ul>
+                
             </li>
             <li>
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Supervisor</span> <span class="fa arrow"></span></a>

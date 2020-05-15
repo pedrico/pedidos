@@ -3,7 +3,7 @@
 @section('content')
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
-        <div class="row content-to-hide" style="height: 13em">
+        <div class="row content-to-hide" style="height: 3em">
 
         </div>
         <div class="row">

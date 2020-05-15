@@ -12,6 +12,13 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'movil/login'
+        'movil/login',
+        'movil/bases',
+        'movil/driver_base/order_assignment',
+        'movil/driver_base/orders',
+        'movil/driver_base/driver_base_orders',
+        'movil/driver_base/base_moto_assign',
+        'movil/driver_base/base_moto_list',
+        
     ];
 }

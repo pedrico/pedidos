@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany('App\ProfileImage');
     }
 
+    public function bases()
+    {
+        return $this->belongsToMany('App\Base', 'user_bases', 'user_id', 'base_id');
+    }
+
     public function hasRoles(array $roles)
     {
 

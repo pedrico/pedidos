@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $title = 'Categorías de productos';
+        $title = 'Nueva categoría de productos';
         $ruta = json_decode('[["Inicio", "/dashboard"],["Categorías de productos", "/product_category"],["Nuevo", "/product_category/create"]]', true);
 
         return view('product/category/create', compact('title', 'ruta'));
@@ -120,9 +120,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {        
-        $catName = ProductCategory::find($id)->name;
+        $itemName = ProductCategory::find($id)->name;
         ProductCategory::destroy($id);
-        return back()->with('message', 'Se eliminó: ' . $catName);
+        return back()->with('message', 'Se eliminó: ' . $itemName);
     }
 
     public function image(Request $r)
@@ -164,7 +164,7 @@ class CategoryController extends Controller
             $profileImg = ProductCategory::find($r->cat_id);
             $profileImg->image_name = $filename;
             $profileImg->image_extension = $fileExtension;
-            // $profileImg->size = $fileSize;            
+            $profileImg->image_size = $fileSize;            
             $profileImg->save();
             return response()->json('success', 200);
         } else {
@@ -183,9 +183,9 @@ class CategoryController extends Controller
 
     public function status(Request $request, $id, $status)
     {
-        $cat = ProductCategory::find($id);
-        $cat->status = $status;        
-        $cat->save();
+        $item = ProductCategory::find($id);
+        $item->status = $status;        
+        $item->save();
         $result = 'Cambio realizado';
         return response()->json(compact('result'));        
     }
