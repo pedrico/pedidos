@@ -1,210 +1,207 @@
-@extends('layouts.picapino_master')
+@extends('layouts.landing_master')
 
 @section('content')
-
-<body id="page-top" class="landing-page no-skin-config FontPicapino">
-    <div class="navbar-wrapper">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <!-- <li data-target="#inSlider" data-slide-to="1"></li> -->
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
             <div class="container">
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @if(!auth()->user())
-                    <a class="navbar-brand" href="{{ route('login') }}">{{ __('Inicia Sesión') }}</a>
-                    @else
-                    <a href="{{route('profile.index')}}" class="navbar-brand">{{auth()->user()->name}} {{auth()->user()->last_name}} </a>
-                    @endif
-                    <a href="" class="navbar-brand-picapino-title" style="padding-left: 1em">
-                        <img src="{{asset('img/logo_white.png')}}" alt="picapino" class="animated fadeInRight picapino-logo" style="height: 4em;">
-                        <label class="picapino-font-landing-title animated fadeInLeft">PICAPINO</label>
-                    </a>
-                </div>
-
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="{{route('landing')}}"><i class="fas fa-home"></i>Inicio</a></li>
-                        <li><a class="page-scroll" href="#features"><i class="far fa-address-card"></i>Contacto</a></li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i>{{ __('Cerrar sesión') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                        <li><a class="page-scroll" href="#team"><i class="fas fa-shopping-cart fa-2x"></i></a></li>
-                    </ul>
-                </div>
             </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
 
-        </nav>
-    </div>
-    <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#inSlider" data-slide-to="0" class="active"></li>
-            <!-- <li data-target="#inSlider" data-slide-to="1"></li> -->
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="container">
-                </div>
-                <!-- Set background for slide in css -->
-                <div class="header-back one"></div>
-
-            </div>
         </div>
-        <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-    <div>
-        <img src="{{ asset('img/landing/Infografia.jpg') }}" style="width: 100%" alt="pinia" />
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div>
+    <img src="{{ asset('img/landing/Infografia.jpg') }}" style="width: 100%" alt="pinia" />
+</div>
+<section class="container features" id="products">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>{{$cat->name}}<br />
+        </div>
     </div>
-    <section class="container features" id="products">
+    <div class="wrapper wrapper-content">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>{{$cat->name}}<br />
-            </div>
-        </div>
-        <div class="wrapper wrapper-content">
-            <div class="row">
-                @foreach($products as $item)
-                <div class="{{ ($loop->index % 2 == 0) ? 'col-lg-4 animated fadeInRight' : 'col-lg-4 animated fadeInLeft'}}">
-                    <div class=" text-center ">
-                        <!-- <div class="widget-head-color-box navy-bg p-lg text-center sombra"> -->
-                        <a href="">
-                            <div style="display: inline-block;">
-                                <img src="/upload/product/{{$item->image_name}}.{{$item->image_extension}}" class="img-circle circle-border m-b-md" style="width: 100%; height: 100%" alt="producto">
-                            </div>
-                        </a>
-                        <div class="m-b-md product-desc">
-                            <h2 class="font-bold no-margins" style="color: #e26141; padding-bottom: 5px">
-                                <span class="product-price badge" style="background-color: #6699cc; font-size: 1em">
-                                    Q.{{$item->price}}
-                                </span>
-                                {{$item->name}}
-                            </h2>
-                            <span>{{$item->description}}</span>
-                            <p><span class="badge badge-primary" style="background-color: #6699cc; font-size: 1em">Q.{{$item->price}}</span></p>
-                        </div>
-                    </div>
-                    <!-- <div class="widget-text-box">
-                        <h4 class="media-heading">Alex Smith</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <div class="text-right">
-                            <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                            <a class="btn btn-xs btn-primary"><i class="fa fa-heart"></i> Love</a>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="{{ ($loop->index % 2 == 0) ? 'col-lg-4 animated fadeInRight' : 'col-lg-4 animated fadeInLeft'}}">
-                    <div class="ibox">
-                        <div class="ibox-content product-box">
+            @foreach($products as $item)
+
+            <div class="{{ ($loop->index % 2 == 0) ? 'col-lg-4 animated fadeInRight' : 'col-lg-4 animated fadeInLeft'}}">
+                <div class="ibox">
+                    <div class="ibox-content product-box ">
+                        <div class="text-center">
                             <a href="">
                                 <div style="display: inline-block;">
                                     <img src="/upload/product/{{$item->image_name}}.{{$item->image_extension}}" class="img-circle circle-border m-b-md" style="width: 100%; height: 100%" alt="producto">
                                 </div>
                             </a>
-                            <div class="product-desc">
-                                <span class="product-price" style="background-color: #6699cc; font-size: 1em">
-                                    Q.{{$item->price}}
-                                </span>
-                                <small class="text-muted">Category</small>
-                                <a href="#" class="product-name"> {{$item->name}}</a>
-                                <div class="small m-t-xs">
-                                    {{$item->description}}
-                                </div>
-                                <div class="m-t text-righ">
+                        </div>
+                        <div class="product-desc">
+                            <span class="product-price" style="background-color: #6699cc; font-size: 1em">
+                                Q.{{$item->price}} / {{$item->unit}}
+                            </span>
+                            <small class="text-muted">{{$item->category}}</small>
+                            <a href="#" class="product-name"> {{$item->name}}</a>
+                            <div class="small m-t-xs">
+                                {{$item->description}}
+                            </div>
+                            <div>
+                                <div class=" m-t text-righ">
                                     <a href="#" class="btn btn-xs btn-outline btn-primary">Detalles <i class="fas fa-caret-right"></i> </a>
+                                    <!-- <div class="picapino-quantity-control" >
+                                            <div style="display: flex;  margin-right:0; margin-left: 0" class=" quantity-select ">
+                                                <button name="button" type="button" class="quantity-select-increase" style="border-right:0; flex-grow:0; flex-shrink:0; padding-top:0; padding-right:1rem; padding-left:1rem; ">-</button>
+                                                <input type="number" name="quantity" id="quantity" value="1" min="1" style="padding: 0;flex-grow:1;flex-shrink:1; text-align: center;border-left:0; border-right:0;" class=" form-control quantity-select-value">
+                                                <button name="button" type="button" class="quantity-select-increase" style="border-left:0;  flex-grow:0; flex-shrink:0; padding-top:0; padding-right:1rem; padding-left:1rem; ">+</button>
+                                            </div>
+                                        </div> -->
+
+                                    <div class="picapino-quantity-control">
+                                        <form method="POST" action="{{route('add_cart_product')}}" class="form-horizontal" style="display: inline">
+                                            {{ csrf_field() }}
+                                            <button class="btn btn-success quantity" data-type='less' data-id="{{$item->id}}" onclick="event.preventDefault();">-</button>
+                                            <input id="quantity{{$item->id}}" name="quantity" class="form-control" type="text" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" style="width: 4em; display: inline-block; text-align: right" value="1">
+                                            <button class="btn btn-success quantity" data-type='more' data-id="{{$item->id}}" onclick="event.preventDefault();">+</button>
+                                            {!! csrf_field() !!}
+                                            <input type="hidden" name="product_id" value="{{$item->id}}">
+                                            <button data-id="{{$item->id}}" type="submit" style="font-size: 2em; padding-left: 6px; padding-top: 0px; padding-bottom: 0px; padding-right: 7px" class="btn btn-primary add_to_cart" onclick="event.preventDefault();"><i class="fas fa-shopping-cart"></i></button>
+                                    </div>
+
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
+            @endforeach
         </div>
+    </div>
 
-    </section>
+</section>
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.location.hash = '#products';
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 80
+        });
 
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
 
+        //Logica para el control de cantidad
+        $('.quantity').on('click', function() {
+            var type = $(this).data("type");
+            var id = '#quantity' + $(this).data('id');
+            var valor = $(id).val();
+            console.log(valor);
+            if (isNaN(valor) || valor == null || valor == "") {
+                console.log("es nan");
+                $(id).val(1);
+            } else {
+                var quantity = parseInt(valor);
+                if (type == "more" && quantity) {
+                    valor = quantity + 1;
+                    if (valor <= 100) {
+                        $(id).val(quantity + 1);
+                    }
+                } else {
+                    valor = quantity - 1;
+                    if (valor > 0) {
+                        $(id).val(quantity - 1);
+                    }
+                }
+            }
+        });
 
-    <!-- Scripts -->
-    <script src="{{ asset('inspinia/js/jquery-3.1.1.min.js') }}"></script>
-    <script src="{{ asset('inspinia/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('inspinia/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-    <script src="{{ asset('inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-
-    <script src="{{ asset('inspinia/js/inspinia.js') }}"></script>
-    <script src="{{ asset('inspinia/js/plugins/pace/pace.min.js') }}"></script>
-    <script src="{{ asset('inspinia/js/plugins/wow/wow.min.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            window.location.hash = '#products';
-            $('body').scrollspy({
-                target: '.navbar-fixed-top',
-                offset: 80
-            });
-
-            // Page scrolling feature
-            $('a.page-scroll').bind('click', function(event) {
-                var link = $(this);
-                $('html, body').stop().animate({
-                    scrollTop: $(link.attr('href')).offset().top - 50
-                }, 500);
-                event.preventDefault();
-                $("#navbar").collapse('hide');
+        //Agregar producto
+        $('.add_to_cart').on('click', function() {
+            var product_id = $(this).data('id');
+            var quantity = $('#quantity' + product_id).val();
+            var url = '{{asset("add_cart_product")}}';
+            var token = $('input[name=_token]').val();
+            jQuery.ajax({
+                url: url,
+                type: "POST",
+                dataType: "json",
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                data: {
+                    '_token': token,
+                    'product_id': product_id,
+                    'quantity': quantity
+                },
+                success: function(data) {
+                    toastr.success('Producto agregado', data.result);
+                },
+                error: function(error) {
+                    toastr.success('Se ha producido un error, por favor comunicate con Picapino.', '¡ERROR!');
+                }
             });
         });
 
-        var cbpAnimatedHeader = (function() {
-            var docElem = document.documentElement,
-                header = document.querySelector('.navbar-default'),
-                didScroll = false,
-                changeHeaderOn = 200;
 
-            function init() {
-                window.addEventListener('scroll', function(event) {
-                    if (!didScroll) {
-                        didScroll = true;
-                        setTimeout(scrollPage, 250);
-                    }
-                }, false);
-            }
 
-            function scrollPage() {
-                var sy = scrollY();
-                if (sy >= changeHeaderOn) {
-                    $(header).addClass('navbar-scroll')
-                } else {
-                    $(header).removeClass('navbar-scroll')
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+            header = document.querySelector('.navbar-default'),
+            didScroll = false,
+            changeHeaderOn = 200;
+
+        function init() {
+            window.addEventListener('scroll', function(event) {
+                if (!didScroll) {
+                    didScroll = true;
+                    setTimeout(scrollPage, 250);
                 }
-                didScroll = false;
+            }, false);
+        }
+
+        function scrollPage() {
+            var sy = scrollY();
+            if (sy >= changeHeaderOn) {
+                $(header).addClass('navbar-scroll')
+            } else {
+                $(header).removeClass('navbar-scroll')
             }
+            didScroll = false;
+        }
 
-            function scrollY() {
-                return window.pageYOffset || docElem.scrollTop;
-            }
-            init();
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
 
-        })();
+    })();
 
-        // Activate WOW.js plugin for animation on scrol
-        new WOW().init();
-    </script>
-    <script>
-    </script>
-</body>
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+</script>
+<script>
 
+</script>
 @endsection

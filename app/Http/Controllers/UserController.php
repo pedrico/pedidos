@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
+use App\RolesUser;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,9 +23,28 @@ class UserController extends Controller
     {
         $users = \App\User::all();
         $title = 'Usuarios';
-        $ruta = json_decode('[["Inicio", "/dashboard"],["Usuarios", "/dashboard"]]', true);         
+        $ruta = json_decode('[["Inicio", "/dashboard"],["Usuarios", "/dashboard"]]', true);
 
         return view('user.index', compact('users', 'title', 'ruta'));
+    }
+
+    public function assign_role(Request $request, $userId)
+    {
+        $this->validate($request, [
+            'rol' => 'required|string|min:5',           
+        ]);
+
+        $user = User::find($userId);
+        $rol = Role::where('name', $request->rol)->first();
+        if ($rol and ($rol->id == 3 or $rol->id == 4)) {
+            $rol_user = new RolesUser();
+            $rol_user->rol_id = $rol->id;
+            $rol_user->user_id = $user->id;
+            $rol_user->save();
+    
+            return back()->with('message', 'El usuario' . $user->name . ' ' . $user->last_name . ' ha sido asignado a  ' . $rol->name);    
+        }
+        return back()->with('message', 'No se ha podido realizar la acción.');
     }
 
     /**

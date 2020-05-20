@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class DriverBaseController extends Controller
 {
+    //lista las bases asignadas a dvBase
     public function bases(Request $request)
     {
         $userId = $request->userId;
@@ -35,6 +36,7 @@ class DriverBaseController extends Controller
         ]);
     }
 
+    //Asignación de orden a driver Base
     public function order_assignment(Request $request)
     {
         $orderId = $request->orderId;
@@ -44,10 +46,10 @@ class DriverBaseController extends Controller
         if ($user and $user->hasRoles(['Driver Base'])) {
             $order  = Order::find($orderId);
             if ($order) {
-                if (!$order->driver_id) {
+                if (!$order->dvBase_id) {
                     //Se valida que la orden no este asignada a ningun driver base
-                    $order->driver_id = $driverId;
-                    $order->status = 2; //Asignado a driver
+                    $order->dvBase_id = $driverId;
+                    $order->status = 5; //Asignado a driver base
                     $order->save();
                     return response()->json([
                         'error' => '0',
@@ -82,10 +84,10 @@ class DriverBaseController extends Controller
                 ->join('users as u', 'u.id', '=', 'o.user_id')
                 ->join('addresses as a', 'a.id', '=', 'o.address_id')
                 ->select('o.id', 'o.correlative', 'o.recipient_alternative_name', 'a.address', 'u.name', 'u.last_name', 'u.second_last_name', 'o.delivery_date', 'o.delivery_time', 'o.status', 'o.base_id')
-                ->where('o.driver_id', $user->id)
-                ->orWhere(function ($query) {
-                    $query->where('status', 2)
-                        ->where('status', 3);
+                ->where('o.dvBase_id', $user->id)
+                ->where(function ($query) {
+                    $query->where('status', 5)
+                        ->orwhere('status', 6);
                 })
                 ->get();
             return response()->json([
@@ -114,14 +116,15 @@ class DriverBaseController extends Controller
                 $orders = DB::table('orders as o')
                     ->join('users as u', 'u.id', '=', 'o.user_id')
                     ->join('addresses as a', 'a.id', '=', 'o.address_id')
-                    ->select('o.id', 'o.correlative', 'o.recipient_alternative_name', 'a.address', 'u.name', 'u.last_name', 'u.second_last_name', 'o.delivery_date', 'o.delivery_time', 'o.status', 'o.base_id')
-                    ->where('o.driver_id', $user->id)
+                    ->select('o.id', 'o.correlative', 'o.recipient_alternative_name', 'a.address', 'u.name', 'u.last_name', 'u.second_last_name', 'o.delivery_date', 'o.delivery_time', 'o.status', 'o.dvBase_id', 'o.base_id')
+                    ->where('o.dvBase_id', $user->id)
                     ->where('o.base_id', $base->id)
-                    ->orWhere(function ($query) {
-                        $query->where('status', 2)
-                            ->where('status', 3);
+                    ->where(function ($query) {
+                        $query->where('status', 5)
+                            ->orwhere('status', 6);
                     })
                     ->get();
+                    
                 return response()->json([
                     'error' => '0',
                     'orders' => $orders,
@@ -193,7 +196,7 @@ class DriverBaseController extends Controller
                 ->join('dvbases_dvmotos as dvs', 'dvBase.id', '=', 'dvs.dvBase_id')
                 ->join('users as  dvMoto', 'dvMoto.id', '=', 'dvs.dvMoto_id')
                 ->join('roles_users as ru', 'ru.user_id', '=', 'dvMoto.id')
-                ->join('roles as r', 'ru.rol_id', '=', 'r.id')  
+                ->join('roles as r', 'ru.rol_id', '=', 'r.id')
                 ->select('dvMoto.id', 'dvMoto.name', 'dvMoto.second_name', 'dvMoto.last_name', 'dvMoto.second_last_name',  DB::raw("concat(r.prefix, '-', \"dvMoto\".id) as correlative"))
                 ->whereDate('dvs.created_at', Carbon::today())
                 ->get();

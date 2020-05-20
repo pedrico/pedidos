@@ -19,6 +19,11 @@ class VerifyCsrfToken extends Middleware
         'movil/driver_base/driver_base_orders',
         'movil/driver_base/base_moto_assign',
         'movil/driver_base/base_moto_list',
+        'movil/driver_moto/order_assignment',
+        'movil/driver_moto/orders',
+        'movil/driver_moto/movimientos_arqui2',
+        
+        
         
     ];
 }
